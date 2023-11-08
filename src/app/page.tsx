@@ -13,10 +13,8 @@ export default async function Home() {
   if (!!members) {
     return (
       <main className=" min-h-screen max-w-7xl px-4 pt-12 mx-auto">
-        <div
-          className={`${mashanzheng.className} flex justify-center flex-col `}
-        >
-          <div className="">
+        <div className={`flex justify-center flex-col `}>
+          <div className={mashanzheng.className}>
             <h1 className="text-center text-[14rem] lg:text-[28rem]">脆</h1>
           </div>
           <div className="col-span-2 flex  items-center ">
