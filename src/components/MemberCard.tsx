@@ -1,55 +1,114 @@
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Instagram } from "lucide-react";
+
 import { Member } from "../lib/types";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
-  CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { urlFor } from "@/lib/client";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function MemberCard({ member }: { member: Member }) {
   console.log(member.profileImage);
   return (
-    <Card className="border-2 border-black dark:border-white">
-      <div className="p-4">
-        <Image
-          className="border-2 border-black dark:border-white rounded-lg"
-          width={200}
-          height={200}
-          src={urlFor(member.profileImage).width(200).height(200).url()}
-          alt={`Profile Image for ${member.englishName}`}
-        />
-      </div>
+    <Dialog>
+      <DialogTrigger>
+        <Card className=" flex justify-center items-center flex-col border-2 border-black dark:border-white hover:cursor-pointer">
+          <div className="p-4">
+            <Image
+              className="border-2 border-black dark:border-white rounded-lg"
+              width={200}
+              height={200}
+              src={urlFor(member.profileImage).width(200).height(200).url()}
+              alt={`Profile Image for ${member.englishName}`}
+            />
+          </div>
 
-      <CardContent>
-        <CardTitle>{member.chineseName}</CardTitle>
-        <CardDescription>{member.englishName}</CardDescription>
-        <div className="grid w-full items-center gap-4"></div>
-        <div className="flex gap-1 mt-4">
-          {member.tags.map((tag) => (
-            <div
-              key={tag._key}
-              className="border-black border-2 dark:border-white text-xs font-extrabold px-2 py-1 rounded-lg"
-            >
-              {tag.tag}
+          <CardContent>
+            <CardTitle>{member.chineseName}</CardTitle>
+            <CardDescription>{member.englishName}</CardDescription>
+            <div className="flex justify-center lg:flex-wrap flex-wrap gap-1 mt-4">
+              {member.tags.map((tag) => (
+                <div
+                  key={tag._key}
+                  className="border-black border-2 dark:border-white text-xs font-extrabold px-2 py-1 rounded-lg"
+                >
+                  {tag.tag}
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="flex flex-col space-y-1.5 mt-4">
-          <a
-            className="hover:underline font-bold"
-            referrerPolicy="no-referrer"
-            href={`https://www.instagram.com/@${member.instagramAccount}`}
-          >
-            @{member.instagramAccount}
-          </a>
-        </div>
-      </CardContent>
-    </Card>
+          </CardContent>
+        </Card>
+      </DialogTrigger>
+      <DialogContent className="w-[94%]">
+        <DialogHeader>
+          <DialogDescription>
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+              <div className="flex justify-center items-center">
+                <Image
+                  className="border-2 border-black dark:border-white rounded-lg"
+                  width={200}
+                  height={200}
+                  src={urlFor(member.profileImage).width(200).height(200).url()}
+                  alt={`Profile Image for ${member.englishName}`}
+                />
+              </div>
+              <div className=" mt-12 lg:mt-0 relative">
+                <Label htmlFor="chineseName">中文名</Label>
+                <p
+                  className="text-black dark:text-white mb-2 text-xl font-semibold"
+                  id="chineseName"
+                >
+                  {member.chineseName}
+                </p>
+                <Label htmlFor="englishName">英文名</Label>
+                <p
+                  className="text-black dark:text-white mb-2 text-lg font-semibold"
+                  id="englishName"
+                >
+                  {member.englishName}
+                </p>
+                <Label htmlFor="from">我来自</Label>
+                <p
+                  className="text-black mb-2 dark:text-white text-lg font-semibold"
+                  id="from"
+                >
+                  {member.hometown}
+                </p>
+
+                <Label htmlFor="from">自我介绍</Label>
+                <p className="mb-24 dark:text-white text-black">
+                  {member.description}
+                </p>
+
+                <div className="absolute bottom-0 flex items-center">
+                  <Instagram />
+                  <Button variant={"link"}>
+                    <a
+                      href={`https://www.instagram.com/${member.instagramAccount}`}
+                    >
+                      @{member.instagramAccount}
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </DialogDescription>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
   );
 }
