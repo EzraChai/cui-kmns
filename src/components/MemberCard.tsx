@@ -2,9 +2,7 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Instagram } from "lucide-react";
@@ -22,7 +20,6 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 export default function MemberCard({ member }: { member: Member }) {
-  console.log(member.profileImage);
   return (
     <Dialog>
       <DialogTrigger>
