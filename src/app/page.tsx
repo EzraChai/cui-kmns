@@ -20,9 +20,9 @@ export default async function Home() {
             <h1 className="text-center text-[14rem] lg:text-[28rem]">脆</h1>
           </div>
           <div className="col-span-2 flex  items-center ">
-            <p className=" lg:w-4/5 mx-auto text-lg lg:text-xl text-neutral-700 dark:text-neutral-300">
-              &quot;脆&quot;文化起源于2023年7月10日,由麦索阁同志启发。初始成员约15位
-              first intake 的KMNS同志组成。过后由second intake 和 third intake
+            <p className=" lg:w-4/5 mx-auto text-lg lg:text-xl text-neutral-600 dark:text-neutral-400">
+              &quot;脆&quot;文化起源于2023年7月10日，由麦索阁同志启发。初始成员约15位
+              first intake 的KMNS同志组成。过后由 second intake 和 third intake
               的同志组成一个大约50位属于男人的团体。
             </p>
           </div>
