@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { client } from "@/lib/client";
 import { Member } from "@/lib/types";
 import MemberCard from "@/components/MemberCard";
