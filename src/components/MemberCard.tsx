@@ -59,7 +59,11 @@ export default function MemberCard({ member }: { member: Member }) {
                   className="border-2 border-black dark:border-white rounded-lg"
                   width={200}
                   height={200}
-                  src={urlFor(member.profileImage).width(200).height(200).url()}
+                  src={urlFor(member.profileImage)
+                    .width(200)
+                    .height(200)
+                    .auto("format")
+                    .url()}
                   alt={`Profile Image for ${member.englishName}`}
                 />
               </div>
