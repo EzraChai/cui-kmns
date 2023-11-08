@@ -3,7 +3,7 @@ import { Member } from "@/lib/types";
 import MemberCard from "@/components/MemberCard";
 import { mashanzheng } from "./layout";
 
-export async function MembersIndex() {
+async function MembersIndex() {
   return await client.fetch<Member[]>(`*[_type == "member"]`);
 }
 
