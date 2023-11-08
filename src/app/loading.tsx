@@ -37,8 +37,8 @@ export default function Loading() {
                 </div>
 
                 <CardContent>
-                  <Skeleton className="w-[180px]"></Skeleton>
-                  <Skeleton className=""></Skeleton>
+                  <Skeleton className="w-[180px] h-[20px]"></Skeleton>
+                  <Skeleton className="w-[180px] h-[20px]"></Skeleton>
                 </CardContent>
               </Card>
             ))}

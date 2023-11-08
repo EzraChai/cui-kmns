@@ -91,7 +91,7 @@ export default function MemberCard({ member }: { member: Member }) {
                 </p>
 
                 <Label htmlFor="from">自我介绍</Label>
-                <p className="mb-24 dark:text-white text-black">
+                <p className="mb-16 dark:text-white text-black">
                   {member.description}
                 </p>
 

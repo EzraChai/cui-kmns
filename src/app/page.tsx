@@ -4,7 +4,9 @@ import MemberCard from "@/components/MemberCard";
 import { mashanzheng } from "./layout";
 
 async function MembersIndex() {
-  return await client.fetch<Member[]>(`*[_type == "member"]`);
+  return await client.fetch<Member[]>(`*[_type=="member"]{
+  ...,
+}`);
 }
 
 export default async function Home() {
