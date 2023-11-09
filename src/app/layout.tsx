@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     title: "脆|官方网站",
     description: "脆的官方认证网页",
     images: [{ url: "/cui-og.png", type: "png" }],
+    url: "https://cuikmns.vercel.app",
   },
 };
 
