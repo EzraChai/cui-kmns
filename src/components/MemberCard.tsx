@@ -54,15 +54,15 @@ export default function MemberCard({ member }: { member: Member }) {
           </CardContent>
         </Card>
       </DialogTrigger>
-      <DialogContent className="w-[94%] lg:w-full">
+      <DialogContent className="w-[90%] lg:w-full">
         <DialogHeader>
           <DialogDescription>
             <div className="grid grid-cols-1 lg:gap-4 lg:grid-cols-2">
               <div className="flex lg:block justify-center items-center">
                 <Image
                   className="mt-2 lg:mt-0 border-2 border-black dark:border-white rounded-lg"
-                  width={300}
-                  height={300}
+                  width={250}
+                  height={250}
                   src={urlFor(member.profileImage)
                     .width(300)
                     .height(300)
