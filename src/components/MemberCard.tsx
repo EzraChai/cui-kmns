@@ -109,6 +109,8 @@ export default function MemberCard({ member }: { member: Member }) {
                   <Instagram />
                   <Button variant={"link"}>
                     <a
+                      referrerPolicy="no-referrer"
+                      target="_blank"
                       href={`https://www.instagram.com/${member.instagramAccount}`}
                     >
                       @{member.instagramAccount}

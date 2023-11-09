@@ -18,6 +18,11 @@ export const mashanzheng = Ma_Shan_Zheng({
 export const metadata: Metadata = {
   title: "脆",
   description: "脆的官方认证网页",
+  openGraph: {
+    title: "脆|官方网站",
+    description: "脆的官方认证网页",
+    images: [{ url: "/cui-og.png" }],
+  },
 };
 
 export default function RootLayout({
