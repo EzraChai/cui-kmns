@@ -33,7 +33,7 @@ export default function Loading() {
                 className=" flex justify-center items-center flex-col border-2 border-black dark:border-white hover:cursor-pointer"
               >
                 <div className="p-4">
-                  <Skeleton className="w-[200px] h-[200px]"></Skeleton>
+                  <Skeleton className="w-[100px] h-[100px] lg:w-[200px] lg:h-[200px]"></Skeleton>
                 </div>
 
                 <CardContent>
