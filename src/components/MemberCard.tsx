@@ -19,6 +19,14 @@ import { urlFor } from "@/lib/client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
+function shortenName(name: string) {
+  let nameArray = name.trim().split(" ");
+  if (nameArray.length >= 4) {
+    return `${nameArray[0] + " " + nameArray[1]}`;
+  }
+  return name;
+}
+
 export default function MemberCard({ member }: { member: Member }) {
   return (
     <Dialog>
@@ -40,29 +48,19 @@ export default function MemberCard({ member }: { member: Member }) {
 
           <CardContent>
             <CardTitle>{member.chineseName}</CardTitle>
-            <CardDescription className="capitalize">
-              {member.englishName}
+            <CardDescription className="capitalize text-sm">
+              {shortenName(member.englishName)}
             </CardDescription>
-            <div className="flex justify-center lg:flex-wrap flex-wrap flex-grow-0 gap-1 mt-4">
-              {member.tags.slice(0, 2).map((tag) => (
-                <div
-                  key={tag._key}
-                  className="border-black border-2 dark:border-white text-xs font-extrabold px-2 py-1 rounded-lg"
-                >
-                  {tag.tag}
-                </div>
-              ))}
-            </div>
           </CardContent>
         </Card>
       </DialogTrigger>
       <DialogContent className="w-[94%] lg:w-full">
         <DialogHeader>
           <DialogDescription>
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <div className="grid grid-cols-1 lg:gap-4 lg:grid-cols-2">
               <div className="flex lg:block justify-center items-center">
                 <Image
-                  className="border-2 border-black dark:border-white rounded-lg"
+                  className="mt-2 lg:mt-0 border-2 border-black dark:border-white rounded-lg"
                   width={300}
                   height={300}
                   src={urlFor(member.profileImage)
@@ -90,7 +88,7 @@ export default function MemberCard({ member }: { member: Member }) {
                   {member.hometown}
                 </p>
 
-                <Label htmlFor="from">我是</Label>
+                <Label htmlFor="from">特色</Label>
                 <div className="flex justify-center lg:justify-start mt-1 gap-1 dark:text-white text-black mb-4">
                   {member.tags.map((tag) => (
                     <div
