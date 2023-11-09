@@ -6,6 +6,7 @@ import { mashanzheng } from "./layout";
 async function MembersIndex() {
   return await client.fetch<Member[]>(`*[_type=="member"]{
   ...,
+    "blurHash":profileImage.asset -> metadata.blurHash
 }`);
 }
 

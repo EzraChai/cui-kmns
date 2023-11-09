@@ -53,41 +53,47 @@ export default function MemberCard({ member }: { member: Member }) {
       <DialogContent className="w-[94%] lg:w-full">
         <DialogHeader>
           <DialogDescription>
-            <div className="grid grid-cols-1 lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
               <div className="flex lg:block justify-center items-center">
                 <Image
                   className="border-2 border-black dark:border-white rounded-lg"
-                  width={200}
-                  height={200}
+                  width={400}
+                  height={400}
                   src={urlFor(member.profileImage)
-                    .width(200)
-                    .height(200)
+                    .width(400)
+                    .height(400)
                     .auto("format")
                     .url()}
                   alt={`Profile Image for ${member.englishName}`}
                 />
               </div>
               <div className=" mt-12 lg:mt-0 relative">
-                <Label htmlFor="chineseName">中文名</Label>
+                <Label htmlFor="chineseName">名字</Label>
                 <p
                   className="text-black dark:text-white mb-2 text-xl font-semibold"
                   id="chineseName"
                 >
-                  {member.chineseName}
+                  {member.chineseName} {member.englishName}
                 </p>
-                <Label htmlFor="englishName">英文名</Label>
-                <p
-                  className="text-black dark:text-white mb-2 text-lg font-semibold"
-                  id="englishName"
-                >
-                  {member.englishName}
-                </p>
-                <Label htmlFor="from">我来自</Label>
+
+                <Label htmlFor="from">来自</Label>
                 <p
                   className="text-black mb-2 dark:text-white text-lg font-semibold"
                   id="from"
                 >
                   {member.hometown}
+                </p>
+
+                <Label htmlFor="from">我是</Label>
+                <p className="flex mt-1 gap-1 dark:text-white text-black  mb-4">
+                  {member.tags.map((tag) => (
+                    <div
+                      key={tag._key}
+                      className="border-black border-2 dark:border-white text-xs font-extrabold px-2 py-1 rounded-lg"
+                    >
+                      {tag.tag}
+                    </div>
+                  ))}
                 </p>
 
                 <Label htmlFor="from">自我介绍</Label>
