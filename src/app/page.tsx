@@ -6,16 +6,17 @@ import { mashanzheng } from "./layout";
 async function MembersIndex() {
   return await client.fetch<Member[]>(`*[_type=="member"]{
   ...,
-    "blurHash":profileImage.asset -> metadata.blurHash
 }`);
 }
+
+// "blurHash":profileImage.asset -> metadata.blurHash
 
 export default async function Home() {
   const members: Member[] = await MembersIndex();
 
   if (!!members) {
     return (
-      <main className=" min-h-screen max-w-7xl px-4 pt-12 mx-auto">
+      <main className=" min-h-screen max-w-5xl px-4 pt-12 mx-auto">
         <div className={`flex justify-center flex-col `}>
           <div className={mashanzheng.className}>
             <h1 className="text-center text-[14rem] lg:text-[28rem]">脆</h1>
@@ -36,7 +37,7 @@ export default async function Home() {
           <h3 className={`${mashanzheng.className} text-2xl lg:text-5xl`}>
             成员介绍
           </h3>
-          <div className="mt-4 lg:mt-8 grid grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="mt-4 lg:mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
             {members.map((member: Member) => (
               <MemberCard key={member._id} member={member} />
             ))}

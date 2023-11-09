@@ -36,9 +36,11 @@ export default function MemberCard({ member }: { member: Member }) {
 
           <CardContent>
             <CardTitle>{member.chineseName}</CardTitle>
-            <CardDescription>{member.englishName}</CardDescription>
-            <div className="flex justify-center lg:flex-wrap flex-wrap gap-1 mt-4">
-              {member.tags.map((tag) => (
+            <CardDescription className="capitalize">
+              <p>{member.englishName}</p>
+            </CardDescription>
+            <div className="flex justify-center lg:flex-wrap flex-wrap flex-grow-0 gap-1 mt-4">
+              {member.tags.slice(0, 2).map((tag) => (
                 <div
                   key={tag._key}
                   className="border-black border-2 dark:border-white text-xs font-extrabold px-2 py-1 rounded-lg"
@@ -70,7 +72,7 @@ export default function MemberCard({ member }: { member: Member }) {
               <div className=" mt-12 lg:mt-0 relative">
                 <Label htmlFor="chineseName">名字</Label>
                 <p
-                  className="text-black dark:text-white mb-2 text-xl font-semibold"
+                  className="text-black capitalize dark:text-white mb-2 text-xl font-semibold"
                   id="chineseName"
                 >
                   {member.chineseName} {member.englishName}
@@ -85,7 +87,7 @@ export default function MemberCard({ member }: { member: Member }) {
                 </p>
 
                 <Label htmlFor="from">我是</Label>
-                <p className="flex mt-1 gap-1 dark:text-white text-black  mb-4">
+                <p className="flex mt-1 gap-1 dark:text-white text-black mb-4">
                   {member.tags.map((tag) => (
                     <div
                       key={tag._key}
