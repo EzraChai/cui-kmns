@@ -1,6 +1,8 @@
-import type { Metadata } from "next";
-import { Inter, Ma_Shan_Zheng } from "next/font/google";
 import "./globals.css";
+
+import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
+import { Inter, Ma_Shan_Zheng } from "next/font/google";
 import React from "react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/Navbar";
@@ -38,6 +40,7 @@ export default function RootLayout({
             {children}
             <Footer />
           </ThemeProvider>
+          <Analytics />
         </body>
       </html>
     </>
