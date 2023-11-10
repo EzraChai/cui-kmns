@@ -42,9 +42,6 @@ export default function Loading() {
                 </CardContent>
               </Card>
             ))}
-            {/* {members.map((member: Member) => (
-              <MemberCard key={member._id} member={member} />
-            ))} */}
           </div>
         </div>
       </main>
