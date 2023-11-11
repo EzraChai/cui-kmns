@@ -56,7 +56,7 @@ export default function MemberCard({ member }: { member: Member }) {
         </Card>
       </DialogTrigger>
 
-      <DialogContent className="w-[90%] lg:w-full rounded-lg">
+      <DialogContent className="w-[85%] lg:w-full rounded-lg">
         <ScrollArea
           style={{ scrollbarColor: "transparent" }}
           className=" max-h-[560px] lg:h-full w-full"
@@ -65,17 +65,18 @@ export default function MemberCard({ member }: { member: Member }) {
             <DialogDescription>
               <div className="grid grid-cols-1 lg:gap-4 lg:grid-cols-2">
                 <div className="flex lg:block justify-center items-center">
-                  <Image
-                    className="mt-2 lg:mt-0 border-2 border-black dark:border-white rounded-lg"
-                    width={200}
-                    height={200}
-                    src={urlFor(member.profileImage)
-                      .width(300)
-                      .height(300)
-                      .auto("format")
-                      .url()}
-                    alt={`Profile Image for ${member.englishName}`}
-                  />
+                  <div className="relative w-[200px] h-[200px] lg:w-[300px] lg:h-[300px]">
+                    <Image
+                      className="mt-2 lg:mt-0 border-2 border-black dark:border-white rounded-lg"
+                      fill
+                      src={urlFor(member.profileImage)
+                        .width(300)
+                        .height(300)
+                        .auto("format")
+                        .url()}
+                      alt={`Profile Image for ${member.englishName}`}
+                    />
+                  </div>
                 </div>
                 <div className=" mt-6 lg:mt-0 relative">
                   <Label htmlFor="chineseName">名字</Label>
