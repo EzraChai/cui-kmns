@@ -32,7 +32,7 @@ export default function MemberCard({ member }: { member: Member }) {
   return (
     <Dialog>
       <DialogTrigger>
-        <Card className=" flex justify-center items-center flex-col border-2 border-black dark:border-white hover:cursor-pointer">
+        <Card className="hover:bg-neutral-100 hover:dark:bg-neutral-800 transition flex justify-center items-center flex-col border-2 border-black dark:border-white hover:cursor-pointer">
           <div className="p-4">
             <Image
               className="border-2 border-black dark:border-white rounded-lg"
