@@ -1,10 +1,7 @@
 import { client } from "@/lib/client";
 import { Member } from "@/lib/types";
 import MemberCard from "@/components/MemberCard";
-import { Card, CardContent } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
 import { mashanzheng } from "./layout";
-import { Suspense } from "react";
 
 async function MembersIndex() {
   return await client.fetch<Member[]>(`*[_type=="member"]{
@@ -41,31 +38,9 @@ export default async function Home() {
             成员介绍
           </h3>
           <div className="mt-4 lg:mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <Suspense
-              fallback={
-                <>
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
-                    <Card
-                      key={num}
-                      className=" flex justify-center items-center flex-col border-2 border-black dark:border-white hover:cursor-pointer"
-                    >
-                      <div className="p-4">
-                        <Skeleton className="w-[100px] h-[100px] lg:w-[200px] lg:h-[200px]"></Skeleton>
-                      </div>
-
-                      <CardContent>
-                        <Skeleton className="w-[60px] lg:w-[180px] h-[20px]"></Skeleton>
-                        <Skeleton className="mt-4 w-[60px] lg:w-[180px] h-[20px]"></Skeleton>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </>
-              }
-            >
-              {members.map((member: Member) => (
-                <MemberCard key={member._id} member={member} />
-              ))}
-            </Suspense>
+            {members.map((member: Member) => (
+              <MemberCard key={member._id} member={member} />
+            ))}
           </div>
         </div>
       </main>
