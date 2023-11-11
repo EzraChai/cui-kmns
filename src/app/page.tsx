@@ -37,7 +37,7 @@ export default async function Home() {
           <h3 className={`${mashanzheng.className} text-2xl lg:text-5xl`}>
             成员介绍
           </h3>
-          <div className="mt-4 lg:mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="mt-4 lg:mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {members.map((member: Member) => (
               <MemberCard key={member._id} member={member} />
             ))}

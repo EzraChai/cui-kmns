@@ -49,25 +49,25 @@ export default function MemberCard({ member }: { member: Member }) {
 
           <CardContent>
             <CardTitle>{member.chineseName}</CardTitle>
-            <CardDescription className="capitalize text-[0.75rem] lg:text-sm">
+            <CardDescription className="capitalize text-[0.75rem] md:text-sm">
               {shortenName(member.englishName)}
             </CardDescription>
           </CardContent>
         </Card>
       </DialogTrigger>
 
-      <DialogContent className="w-[85%] lg:w-full rounded-lg">
+      <DialogContent className="py-0 px-2 w-[85%] md:w-full rounded-lg">
         <ScrollArea
-          style={{ scrollbarColor: "transparent" }}
-          className=" max-h-[560px] lg:h-full w-full"
+          style={{ scrollbarColor: "white" }}
+          className=" max-h-[580px] px-2 md:h-full w-full"
         >
           <DialogHeader>
-            <DialogDescription>
-              <div className="grid grid-cols-1 lg:gap-4 lg:grid-cols-2">
-                <div className="flex lg:block justify-center items-center">
-                  <div className="relative w-[200px] h-[200px] lg:w-[300px] lg:h-[300px]">
+            <DialogDescription className="my-4">
+              <div className="grid grid-cols-1 md:gap-6 md:grid-cols-2">
+                <div className="flex justify-center items-center">
+                  <div className="relative w-[200px] h-[200px] md:w-[300px] md:h-[300px]">
                     <Image
-                      className="mt-2 lg:mt-0 border-2 border-black dark:border-white rounded-lg"
+                      className="mt-2 md:mt-0 border-2 border-black dark:border-white rounded-lg"
                       fill
                       src={urlFor(member.profileImage)
                         .width(300)
@@ -78,7 +78,7 @@ export default function MemberCard({ member }: { member: Member }) {
                     />
                   </div>
                 </div>
-                <div className=" mt-6 lg:mt-0 relative">
+                <div className=" mt-6 md:mt-2 relative">
                   <Label htmlFor="chineseName">名字</Label>
                   <div
                     className="text-black capitalize dark:text-white mb-2 text-xl font-semibold"
@@ -96,7 +96,7 @@ export default function MemberCard({ member }: { member: Member }) {
                   </p>
 
                   <Label htmlFor="from">特色</Label>
-                  <div className="flex justify-center lg:justify-start mt-1 gap-1 dark:text-white text-black mb-4">
+                  <div className="flex justify-center md:justify-start mt-1 gap-1 dark:text-white text-black mb-4">
                     {member.tags.map((tag) => (
                       <div
                         key={tag._key}
