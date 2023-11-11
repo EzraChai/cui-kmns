@@ -57,7 +57,10 @@ export default function MemberCard({ member }: { member: Member }) {
       </DialogTrigger>
 
       <DialogContent className="w-[90%] lg:w-full rounded-lg">
-        <ScrollArea className=" max-h-[560px] lg:h-full w-full">
+        <ScrollArea
+          style={{ scrollbarColor: "transparent" }}
+          className=" max-h-[560px] lg:h-full w-full"
+        >
           <DialogHeader>
             <DialogDescription>
               <div className="grid grid-cols-1 lg:gap-4 lg:grid-cols-2">
