@@ -56,16 +56,16 @@ export default function MemberCard({ member }: { member: Member }) {
         </Card>
       </DialogTrigger>
 
-      <DialogContent className="w-[90%] lg:w-full">
-        <ScrollArea className="h-[580px] lg:h-full w-full">
+      <DialogContent className="w-[90%] lg:w-full rounded-lg">
+        <ScrollArea className="h-[560px] lg:h-full w-full">
           <DialogHeader>
             <DialogDescription>
               <div className="grid grid-cols-1 lg:gap-4 lg:grid-cols-2">
                 <div className="flex lg:block justify-center items-center">
                   <Image
                     className="mt-2 lg:mt-0 border-2 border-black dark:border-white rounded-lg"
-                    width={250}
-                    height={250}
+                    width={200}
+                    height={200}
                     src={urlFor(member.profileImage)
                       .width(300)
                       .height(300)
@@ -74,7 +74,7 @@ export default function MemberCard({ member }: { member: Member }) {
                     alt={`Profile Image for ${member.englishName}`}
                   />
                 </div>
-                <div className=" mt-12 lg:mt-0 relative">
+                <div className=" mt-6 lg:mt-0 relative">
                   <Label htmlFor="chineseName">名字</Label>
                   <div
                     className="text-black capitalize dark:text-white mb-2 text-xl font-semibold"
