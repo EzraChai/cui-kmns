@@ -45,7 +45,7 @@ export default function MemberCard({ member }: { member: Member }) {
                   .quality(40)
                   .url()}
                 placeholder="blur"
-                blurDataURL={member.profileImage.asset.metadata.lqip.toString()}
+                blurDataURL={member.profileImage.asset.metadata.lqip}
                 alt={`Profile Image for ${member.englishName}`}
               />
             </div>
@@ -74,6 +74,8 @@ export default function MemberCard({ member }: { member: Member }) {
                           .height(300)
                           .auto("format")
                           .url()}
+                        placeholder="blur"
+                        blurDataURL={member.profileImage.asset.metadata.lqip}
                         alt={`Profile Image for ${member.englishName}`}
                       />
                     </div>
