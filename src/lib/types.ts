@@ -1,6 +1,8 @@
 type AssetReference = {
   _ref: string;
-  _type: string;
+  metadata: {
+    lqip: string;
+  };
 };
 
 type Image = {

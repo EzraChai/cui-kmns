@@ -29,107 +29,108 @@ function shortenName(name: string) {
 }
 
 export default function MemberCard({ member }: { member: Member }) {
-  return (
-    <Dialog>
-      <DialogTrigger>
-        <Card className="hover:bg-neutral-100 hover:dark:bg-neutral-800 transition flex justify-center items-center flex-col border-2 border-black dark:border-white hover:cursor-pointer">
-          <div className="p-4">
-            <Image
-              className="border-2 border-black dark:border-white rounded-lg"
-              width={200}
-              height={200}
-              src={urlFor(member.profileImage)
-                .width(200)
-                .height(200)
-                .quality(40)
-                .url()}
-              alt={`Profile Image for ${member.englishName}`}
-            />
-          </div>
+  if (member.profileImage.asset.metadata?.lqip) {
+    return (
+      <Dialog>
+        <DialogTrigger>
+          <Card className="hover:bg-neutral-100 hover:dark:bg-neutral-800 transition flex justify-center items-center flex-col border-2 border-black dark:border-white hover:cursor-pointer">
+            <div className="p-4">
+              <Image
+                className="border-2 border-black dark:border-white rounded-lg"
+                width={200}
+                height={200}
+                src={urlFor(member.profileImage.asset)
+                  .width(200)
+                  .height(200)
+                  .quality(40)
+                  .url()}
+                placeholder="blur"
+                blurDataURL={member.profileImage.asset.metadata.lqip.toString()}
+                alt={`Profile Image for ${member.englishName}`}
+              />
+            </div>
 
-          <CardContent>
-            <CardTitle>{member.chineseName}</CardTitle>
-            <CardDescription className="capitalize text-[0.75rem] md:text-sm">
-              {shortenName(member.englishName)}
-            </CardDescription>
-          </CardContent>
-        </Card>
-      </DialogTrigger>
+            <CardContent>
+              <CardTitle>{member.chineseName}</CardTitle>
+              <CardDescription className="capitalize text-[0.75rem] md:text-sm">
+                {shortenName(member.englishName)}
+              </CardDescription>
+            </CardContent>
+          </Card>
+        </DialogTrigger>
 
-      <DialogContent className="py-0 px-2 w-[85%] md:w-full rounded-lg">
-        <ScrollArea
-          style={{ scrollbarColor: "white" }}
-          className=" max-h-[580px] px-2 md:h-full w-full"
-        >
-          <DialogHeader>
-            <DialogDescription className="my-4">
-              <div className="grid grid-cols-1 md:gap-6 md:grid-cols-2">
-                <div className="flex justify-center items-center">
-                  <div className="relative w-[200px] h-[200px] md:w-[300px] md:h-[300px]">
-                    <Image
-                      className="mt-2 md:mt-0 border-2 border-black dark:border-white rounded-lg"
-                      fill
-                      src={urlFor(member.profileImage)
-                        .width(300)
-                        .height(300)
-                        .auto("format")
-                        .url()}
-                      alt={`Profile Image for ${member.englishName}`}
-                    />
+        <DialogContent className="py-0 px-2 w-[85%] md:w-full rounded-lg">
+          <ScrollArea className=" max-h-[580px] px-2 md:h-full w-full">
+            <DialogHeader>
+              <DialogDescription className="my-4">
+                <div className="grid grid-cols-1 md:gap-6 md:grid-cols-2">
+                  <div className="flex justify-center items-center">
+                    <div className="relative w-[200px] h-[200px] md:w-[300px] md:h-[300px]">
+                      <Image
+                        className="mt-2 md:mt-0 border-2 border-black dark:border-white rounded-lg"
+                        fill
+                        src={urlFor(member.profileImage)
+                          .width(300)
+                          .height(300)
+                          .auto("format")
+                          .url()}
+                        alt={`Profile Image for ${member.englishName}`}
+                      />
+                    </div>
+                  </div>
+                  <div className=" mt-6 md:mt-2 relative">
+                    <Label htmlFor="chineseName">名字</Label>
+                    <div
+                      className="text-black capitalize dark:text-white mb-2 text-xl font-semibold"
+                      id="chineseName"
+                    >
+                      {member.chineseName} {member.englishName}
+                    </div>
+
+                    <Label htmlFor="from">来自</Label>
+                    <p
+                      className="text-black mb-2 dark:text-white text-lg font-semibold"
+                      id="from"
+                    >
+                      {member.hometown}
+                    </p>
+
+                    <Label htmlFor="from">特色</Label>
+                    <div className="flex justify-center md:justify-start mt-1 gap-1 dark:text-white text-black mb-4">
+                      {member.tags.map((tag) => (
+                        <div
+                          key={tag._key}
+                          className="border-black border-2 dark:border-white text-xs font-extrabold px-2 py-1 rounded-lg"
+                        >
+                          {tag.tag}
+                        </div>
+                      ))}
+                    </div>
+
+                    <Label htmlFor="from">自我介绍</Label>
+                    <p className="mb-16 dark:text-white text-black">
+                      {member.description}
+                    </p>
+
+                    <div className="absolute bottom-0 flex items-center">
+                      <Instagram />
+                      <Button variant={"link"}>
+                        <a
+                          referrerPolicy="no-referrer"
+                          target="_blank"
+                          href={`https://www.instagram.com/${member.instagramAccount}`}
+                        >
+                          @{member.instagramAccount}
+                        </a>
+                      </Button>
+                    </div>
                   </div>
                 </div>
-                <div className=" mt-6 md:mt-2 relative">
-                  <Label htmlFor="chineseName">名字</Label>
-                  <div
-                    className="text-black capitalize dark:text-white mb-2 text-xl font-semibold"
-                    id="chineseName"
-                  >
-                    {member.chineseName} {member.englishName}
-                  </div>
-
-                  <Label htmlFor="from">来自</Label>
-                  <p
-                    className="text-black mb-2 dark:text-white text-lg font-semibold"
-                    id="from"
-                  >
-                    {member.hometown}
-                  </p>
-
-                  <Label htmlFor="from">特色</Label>
-                  <div className="flex justify-center md:justify-start mt-1 gap-1 dark:text-white text-black mb-4">
-                    {member.tags.map((tag) => (
-                      <div
-                        key={tag._key}
-                        className="border-black border-2 dark:border-white text-xs font-extrabold px-2 py-1 rounded-lg"
-                      >
-                        {tag.tag}
-                      </div>
-                    ))}
-                  </div>
-
-                  <Label htmlFor="from">自我介绍</Label>
-                  <p className="mb-16 dark:text-white text-black">
-                    {member.description}
-                  </p>
-
-                  <div className="absolute bottom-0 flex items-center">
-                    <Instagram />
-                    <Button variant={"link"}>
-                      <a
-                        referrerPolicy="no-referrer"
-                        target="_blank"
-                        href={`https://www.instagram.com/${member.instagramAccount}`}
-                      >
-                        @{member.instagramAccount}
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </DialogDescription>
-          </DialogHeader>
-        </ScrollArea>
-      </DialogContent>
-    </Dialog>
-  );
+              </DialogDescription>
+            </DialogHeader>
+          </ScrollArea>
+        </DialogContent>
+      </Dialog>
+    );
+  }
 }
