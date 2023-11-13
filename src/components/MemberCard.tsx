@@ -42,7 +42,6 @@ export default function MemberCard({ member }: { member: Member }) {
                 src={urlFor(member.profileImage.asset)
                   .width(200)
                   .height(200)
-                  .quality(40)
                   .url()}
                 placeholder="blur"
                 blurDataURL={member.profileImage.asset.metadata.lqip}
