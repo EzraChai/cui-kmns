@@ -1,7 +1,25 @@
+import { client } from "@/lib/client";
 import { mashanzheng } from "./layout";
 import Members from "@/components/Members";
+import { Member } from "@/lib/types";
+import { atom } from "jotai";
+
+async function getMembers(): Promise<Member[]> {
+  return await client.fetch<Member[]>(`*[_type=="member"]{
+  ...,
+  profileImage{
+       asset -> {
+      metadata {
+        lqip
+      },
+    "_ref": _id,
+    }
+  }
+}`);
+}
 
 export default async function Home() {
+  const members = await getMembers();
   return (
     <main className=" min-h-screen max-w-5xl px-4 pt-12 mx-auto">
       <div className={`flex justify-center flex-col `}>
@@ -24,7 +42,7 @@ export default async function Home() {
         <h3 className={`${mashanzheng.className} text-2xl lg:text-5xl`}>
           成员介绍
         </h3>
-        <Members />
+        <Members members={members} />
       </div>
     </main>
   );

@@ -2,7 +2,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogHeader,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Instagram } from "lucide-react";
@@ -119,9 +118,9 @@ export default function MemberCard({ member }: { member: Member }) {
                   <div className="absolute bottom-0 flex items-center">
                     <Instagram />
                     <Button variant={"link"}>
-                      <InstagramButton
+                      {/* <InstagramButton
                         instagramAccount={member.instagramAccount}
-                      />
+                      /> */}
                     </Button>
                   </div>
                 </div>
