@@ -119,7 +119,7 @@ export default function MemberCard({ member }: { member: Member }) {
                         <a
                           referrerPolicy="no-referrer"
                           target="_blank"
-                          href={`https://www.instagram.com/${member.instagramAccount}`}
+                          href={`https://www.instagram.com/_u/${member.instagramAccount}`}
                         >
                           @{member.instagramAccount}
                         </a>
