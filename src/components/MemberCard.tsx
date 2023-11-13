@@ -19,6 +19,7 @@ import { urlFor } from "@/lib/client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "./ui/scroll-area";
+import InstagramButton from "./InstagramButton";
 
 function shortenName(name: string) {
   let nameArray = name.trim().split(" ");
@@ -59,78 +60,73 @@ export default function MemberCard({ member }: { member: Member }) {
         </DialogTrigger>
 
         <DialogContent className="py-0 px-2 w-[85%] md:w-full rounded-lg">
-          <ScrollArea className=" max-h-[580px] px-2 md:h-full w-full">
-            <DialogHeader>
-              <DialogDescription className="my-4">
-                <div className="grid grid-cols-1 md:gap-6 md:grid-cols-2">
-                  <div className="flex justify-center items-center">
-                    <div className="relative w-[200px] h-[200px] md:w-[300px] md:h-[300px]">
-                      <Image
-                        className="mt-2 md:mt-0 border-2 border-black dark:border-white rounded-lg"
-                        fill
-                        src={urlFor(member.profileImage)
-                          .width(300)
-                          .height(300)
-                          .auto("format")
-                          .url()}
-                        placeholder="blur"
-                        blurDataURL={member.profileImage.asset.metadata.lqip}
-                        alt={`Profile Image for ${member.englishName}`}
-                      />
-                    </div>
-                  </div>
-                  <div className=" mt-6 md:mt-2 relative">
-                    <Label htmlFor="chineseName">名字</Label>
-                    <div
-                      className="text-black capitalize dark:text-white mb-2 text-xl font-semibold"
-                      id="chineseName"
-                    >
-                      {member.chineseName} {member.englishName}
-                    </div>
-
-                    <Label htmlFor="from">来自</Label>
-                    <p
-                      className="text-black mb-2 dark:text-white text-lg font-semibold"
-                      id="from"
-                    >
-                      {member.hometown}
-                    </p>
-
-                    <Label htmlFor="from">特色</Label>
-                    <div className="flex justify-center md:justify-start mt-1 gap-1 dark:text-white text-black mb-4">
-                      {member.tags.map((tag) => (
-                        <div
-                          key={tag._key}
-                          className="border-black border-2 dark:border-white text-xs font-extrabold px-2 py-1 rounded-lg"
-                        >
-                          {tag.tag}
-                        </div>
-                      ))}
-                    </div>
-
-                    <Label htmlFor="from">自我介绍</Label>
-                    <p className="mb-16 dark:text-white text-black">
-                      {member.description}
-                    </p>
-
-                    <div className="absolute bottom-0 flex items-center">
-                      <Instagram />
-                      <Button variant={"link"}>
-                        {}
-                        <a
-                          referrerPolicy="no-referrer"
-                          target="_blank"
-                          // href={`https://www.instagram.com/_u/${member.instagramAccount}`}
-                          href={`instagram://user?username=${member.instagramAccount}`}
-                        >
-                          @{member.instagramAccount}
-                        </a>
-                      </Button>
-                    </div>
+          <ScrollArea className="max-h-[580px] px-2 md:h-full w-full">
+            <DialogDescription
+              asChild
+              className="my-4 text-center md:text-left"
+            >
+              <div className="grid grid-cols-1 md:gap-6 md:grid-cols-2">
+                <div className="flex justify-center items-center">
+                  <div className="relative w-[200px] h-[200px] md:w-[300px] md:h-[300px]">
+                    <Image
+                      className="mt-2 md:mt-0 border-2 border-black dark:border-white rounded-lg"
+                      fill
+                      src={urlFor(member.profileImage)
+                        .width(300)
+                        .height(300)
+                        .auto("format")
+                        .url()}
+                      placeholder="blur"
+                      blurDataURL={member.profileImage.asset.metadata.lqip}
+                      alt={`Profile Image for ${member.englishName}`}
+                    />
                   </div>
                 </div>
-              </DialogDescription>
-            </DialogHeader>
+                <div className=" mt-6 md:mt-2 relative">
+                  <Label htmlFor="chineseName">名字</Label>
+                  <div
+                    className="text-black capitalize dark:text-white mb-2 text-xl font-semibold"
+                    id="chineseName"
+                  >
+                    {member.chineseName} {member.englishName}
+                  </div>
+
+                  <Label htmlFor="from">来自</Label>
+                  <div
+                    className="text-black mb-2 dark:text-white text-lg font-semibold"
+                    id="from"
+                  >
+                    {member.hometown}
+                  </div>
+
+                  <Label htmlFor="from">特色</Label>
+                  <div className="flex justify-center md:justify-start mt-1 gap-1 dark:text-white text-black mb-4">
+                    {member.tags.map((tag) => (
+                      <div
+                        key={tag._key}
+                        className="border-black border-2 dark:border-white text-xs font-extrabold px-2 py-1 rounded-lg"
+                      >
+                        {tag.tag}
+                      </div>
+                    ))}
+                  </div>
+
+                  <Label htmlFor="from">自我介绍</Label>
+                  <div className="mb-16 dark:text-white text-black">
+                    {member.description}
+                  </div>
+
+                  <div className="absolute bottom-0 flex items-center">
+                    <Instagram />
+                    <Button variant={"link"}>
+                      <InstagramButton
+                        instagramAccount={member.instagramAccount}
+                      />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </DialogDescription>
           </ScrollArea>
         </DialogContent>
       </Dialog>

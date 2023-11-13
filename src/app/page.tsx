@@ -1,21 +1,7 @@
-import { client } from "@/lib/client";
-import { Member } from "@/lib/types";
-import MemberCard from "@/components/MemberCard";
 import { mashanzheng } from "./layout";
 import Members from "@/components/Members";
 
-// async function MembersIndex() {
-//   return await client.fetch<Member[]>(`*[_type=="member"]{
-//   ...,
-// }`);
-// }
-
-// "blurHash":profileImage.asset -> metadata.blurHash
-
 export default async function Home() {
-  // const members: Member[] = await MembersIndex();
-
-  // if (!!members) {
   return (
     <main className=" min-h-screen max-w-5xl px-4 pt-12 mx-auto">
       <div className={`flex justify-center flex-col `}>
@@ -39,11 +25,6 @@ export default async function Home() {
           成员介绍
         </h3>
         <Members />
-        {/* <div className="mt-4 lg:mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {members.map((member: Member) => (
-              <MemberCard key={member._id} member={member} />
-            ))}
-          </div> */}
       </div>
     </main>
   );
