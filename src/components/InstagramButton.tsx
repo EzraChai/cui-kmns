@@ -1,15 +1,10 @@
-import { atom, useAtom } from "jotai";
-
-const isLaptopAtom = atom(
-  /Windows NT|Macintosh|Linux x86_64/i.test(navigator.userAgent)
-);
-
 export default function InstagramButton({
   instagramAccount,
+  isLaptop,
 }: {
   instagramAccount: string;
+  isLaptop: boolean;
 }) {
-  const [isLaptop] = useAtom<boolean>(isLaptopAtom);
   return (
     <a
       referrerPolicy="no-referrer"

@@ -28,7 +28,13 @@ function shortenName(name: string) {
   return name;
 }
 
-export default function MemberCard({ member }: { member: Member }) {
+export default function MemberCard({
+  member,
+  isLaptop,
+}: {
+  member: Member;
+  isLaptop: boolean;
+}) {
   if (member.profileImage.asset.metadata?.lqip) {
     return (
       <Dialog>
@@ -118,9 +124,10 @@ export default function MemberCard({ member }: { member: Member }) {
                   <div className="absolute bottom-0 flex items-center">
                     <Instagram />
                     <Button variant={"link"}>
-                      {/* <InstagramButton
+                      <InstagramButton
+                        isLaptop={isLaptop}
                         instagramAccount={member.instagramAccount}
-                      /> */}
+                      />
                     </Button>
                   </div>
                 </div>

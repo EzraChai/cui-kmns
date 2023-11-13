@@ -11,7 +11,14 @@ import { useDebounce } from "@/lib/hooks";
 export default function Members({ members }: { members: Member[] }) {
   const [newMembers, setNewMembers] = useState<Member[]>(members);
   const [search, setSearch] = useState("");
+  const [isLaptop, setIsLaptop] = useState(false);
   const debouncedSearch = useDebounce(search);
+
+  useEffect(() => {
+    setIsLaptop(
+      /Windows NT|Macintosh|Linux x86_64/i.test(navigator?.userAgent)
+    );
+  }, [isLaptop]);
 
   useEffect(() => {
     if ("" === debouncedSearch && members) {
@@ -61,7 +68,7 @@ export default function Members({ members }: { members: Member[] }) {
           }
         >
           {newMembers.map((member: Member) => (
-            <MemberCard key={member._id} member={member} />
+            <MemberCard isLaptop={isLaptop} key={member._id} member={member} />
           ))}
           {newMembers.length === 0 && (
             <div className="text-center col-span-4 pt-12 pb-4">
