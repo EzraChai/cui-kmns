@@ -41,7 +41,7 @@ export default function Members({ members }: { members: Member[] }) {
       <Input
         onChange={(e) => setSearch(e.target.value)}
         value={search}
-        className="mt-4 first-letter:lg:mt-8 focus-visible:border-white rounded-none focus-within:ring-0 mb-2 md:max-w-[14rem] border-b-2"
+        className=" mt-4 first-letter:lg:mt-8 focus-visible:border-white rounded-none focus-within:ring-0 mb-2 md:max-w-[14rem] border-b-2"
         type="text"
         placeholder="寻找帅哥成员"
       />

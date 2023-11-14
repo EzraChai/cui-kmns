@@ -2,7 +2,6 @@ import { client } from "@/lib/client";
 import { mashanzheng } from "./layout";
 import Members from "@/components/Members";
 import { Member } from "@/lib/types";
-import { atom } from "jotai";
 
 async function getMembers(): Promise<Member[]> {
   return await client.fetch<Member[]>(`*[_type=="member"]{
