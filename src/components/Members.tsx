@@ -38,13 +38,19 @@ export default function Members({ members }: { members: Member[] }) {
 
   return (
     <>
-      <Input
-        onChange={(e) => setSearch(e.target.value)}
-        value={search}
-        className=" mt-4 first-letter:lg:mt-8 focus-visible:border-white rounded-none focus-within:ring-0 mb-2 md:max-w-[14rem] border-b-2"
-        type="text"
-        placeholder="寻找帅哥成员"
-      />
+      <div className="flex justify-between items-baseline">
+        <Input
+          onChange={(e) => setSearch(e.target.value)}
+          value={search}
+          className=" mt-4 first-letter:lg:mt-8 focus-visible:border-black transition dark:focus-visible:border-white rounded-none focus-within:ring-0 mb-2 md:max-w-[14rem] border-b-2"
+          type="text"
+          placeholder="寻找帅哥成员"
+        />
+        <div className="hidden md:block text-xs text-foreground">
+          <p>共{members.length}注册成员</p>
+        </div>
+      </div>
+
       <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <Suspense
           fallback={
@@ -76,6 +82,9 @@ export default function Members({ members }: { members: Member[] }) {
             </div>
           )}
         </Suspense>
+      </div>
+      <div className="mt-6 pr-1 flex w-full justify-end md:hidden text-xs text-foreground">
+        <p>共{members.length}注册成员</p>
       </div>
     </>
   );
