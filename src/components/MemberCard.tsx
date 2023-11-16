@@ -118,7 +118,9 @@ export default function MemberCard({
 
                   <Label htmlFor="from">自我介绍</Label>
                   <div className="mb-16 dark:text-white text-black">
-                    {member.description}
+                    <p className=" w-full whitespace-pre-line">
+                      {member.description}
+                    </p>
                   </div>
 
                   <div className="absolute bottom-0 flex items-center">
