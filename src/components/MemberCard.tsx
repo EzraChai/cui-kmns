@@ -57,7 +57,7 @@ export default function MemberCard({
 
             <CardContent>
               <CardTitle>{member.chineseName}</CardTitle>
-              <CardDescription className="capitalize text-[0.75rem] md:text-sm">
+              <CardDescription className="capitalize text-[0.74rem] md:text-sm">
                 {shortenName(member.englishName)}
               </CardDescription>
             </CardContent>
