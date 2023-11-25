@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning>
+    <html lang="cn" suppressHydrationWarning>
       <head />
       <body className={inter.className}>
         <ThemeProvider
