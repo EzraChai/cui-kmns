@@ -105,7 +105,7 @@ export default function MemberCard({
                   </div>
 
                   <Label htmlFor="from">特色</Label>
-                  <div className="flex justify-center md:justify-start mt-1 gap-1 dark:text-white text-black mb-4">
+                  <div className="flex justify-center flex-wrap md:justify-start mt-1 gap-1 dark:text-white text-black mb-4">
                     {member.tags.map((tag) => (
                       <div
                         key={tag._key}
