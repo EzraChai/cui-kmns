@@ -29,6 +29,11 @@ export const metadata: Metadata = {
     url: "https://kmnscui.vercel.app",
     type: "website",
   },
+  authors: [
+    {
+      name: "Ezra Chai",
+    },
+  ],
 };
 
 export default function RootLayout({
