@@ -16,7 +16,7 @@ export const mashanzheng = Ma_Shan_Zheng({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cuikmns.vercel.app"),
+  metadataBase: new URL("https://kmnscui.vercel.app"),
   title: "脆",
   generator: "Next.js",
   referrer: "origin-when-cross-origin",
@@ -26,21 +26,8 @@ export const metadata: Metadata = {
     title: "脆|官方网站",
     description: "脆的官方认证网页",
     images: [{ url: "/cui-og.png", type: "png" }],
-    url: "https://cuikmns.vercel.app",
+    url: "https://kmnscui.vercel.app",
     type: "website",
-  },
-  robots: {
-    index: false,
-    follow: true,
-    nocache: true,
-    googleBot: {
-      index: false,
-      follow: false,
-      noimageindex: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
 };
 
@@ -50,23 +37,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <html suppressHydrationWarning>
-        <head />
-        <body className={inter.className}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Navbar />
-            {children}
-            <Footer />
-          </ThemeProvider>
-          <Analytics />
-        </body>
-      </html>
-    </>
+    <html suppressHydrationWarning>
+      <head />
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
+        <Analytics />
+      </body>
+    </html>
   );
 }

@@ -21,7 +21,7 @@ import { ScrollArea } from "./ui/scroll-area";
 import InstagramButton from "./InstagramButton";
 
 function shortenName(name: string) {
-  let nameArray = name.trim().split(" ");
+  let nameArray = name.split(" ");
   if (nameArray.length >= 4) {
     return `${nameArray[0] + " " + nameArray[1]}`;
   }
