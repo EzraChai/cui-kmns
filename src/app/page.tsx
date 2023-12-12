@@ -2,19 +2,22 @@ import { client } from "@/lib/client";
 import { mashanzheng } from "./layout";
 import Members from "@/components/Members";
 import { Member } from "@/lib/types";
+import { AlertRecentActivity } from "@/components/AlertRecentActivity";
 
 async function getMembers(): Promise<Member[]> {
-  return await client.fetch<Member[]>(`*[_type=="member"]{
-  ...,
-  profileImage{
+  return await client.fetch<Member[]>(`
+  *[_type=="member"]{
+    ...,
+    profileImage{
        asset -> {
-      metadata {
-        lqip
-      },
-    "_ref": _id,
+        metadata {
+          lqip
+        },
+      "_ref": _id,
+      }
     }
   }
-}`);
+`);
 }
 
 export default async function Home() {
@@ -22,6 +25,7 @@ export default async function Home() {
   return (
     <main className=" min-h-screen max-w-5xl px-4 pt-12 mx-auto">
       <div className={`flex justify-center flex-col `}>
+        <AlertRecentActivity />
         <div className={mashanzheng.className}>
           <h1 className="text-center text-[14rem] lg:text-[28rem]">脆</h1>
         </div>

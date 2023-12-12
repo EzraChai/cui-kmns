@@ -30,3 +30,9 @@ export type Member = {
   tags: Tag[];
   _updatedAt: string;
 };
+
+export type RecentActivity = {
+  _id: string;
+  description: string;
+  instagramPostID: string;
+};
