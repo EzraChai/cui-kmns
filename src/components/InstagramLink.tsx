@@ -13,7 +13,7 @@ export default function InstagramRecentActivity({
         className="lg:hidden"
         referrerPolicy="no-referrer"
         target="_blank"
-        href={`instagram://p/${recentActivity.instagramPostID}`}
+        href={`instagram://media?id=${recentActivity.instagramPostID}`}
       >
         <Alert className="mt-16 bg-transparent relative overflow-hidden rounded-none border-2 dark:border-white border-black">
           <AlertTitle className={`${mashanzheng.className} text-md`}>
