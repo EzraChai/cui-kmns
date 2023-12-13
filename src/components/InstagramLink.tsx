@@ -29,7 +29,7 @@ export default function InstagramRecentActivity({
         </Alert>
       </a>
       <a
-        className="hidden lg:block"
+        className="hidden w-1/2 mx-auto lg:block"
         referrerPolicy="no-referrer"
         target="_blank"
         href={`https://instagram.com/p/${recentActivity.instagramPostID}`}
@@ -40,8 +40,10 @@ export default function InstagramRecentActivity({
           >
             近期大条事情
           </AlertTitle>
-          <div className=" left-0 bottom-0 w-10 h-10 -z-10  rounded-full bg-purple-500 absolute blur-xl "></div>
-          <div className=" top-0 right-0 -z-10 w-10 h-10 rounded-full bg-red-500 absolute blur-xl "></div>
+          <div className=" left-0 top-0 w-10 h-10 -z-10  rounded-full bg-purple-500 absolute blur-xl "></div>
+          <div className=" left-0 bottom-0 w-5 h-5 -z-10  rounded-full bg-blue-500 absolute blur-xl "></div>
+          <div className=" top-0 right-0 -z-10 w-5 h-5 rounded-full bg-orange-500 absolute blur-xl "></div>
+          <div className=" bottom-0 right-0 -z-10 w-10 h-10 rounded-full bg-red-500 absolute blur-xl "></div>
           <AlertDescription className="text-md lg:text-md text-neutral-600 dark:text-neutral-400">
             {recentActivity.description}
           </AlertDescription>
