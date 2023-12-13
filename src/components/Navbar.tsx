@@ -13,7 +13,7 @@ export function Navbar() {
             <Image
               className="w-14 h-14 lg:w-16 lg:h-16 dark:invert-0 invert"
               src={CuiLogo}
-              rel="preload"
+              priority={true}
               alt="Cui's Logo"
             />
           </li>
