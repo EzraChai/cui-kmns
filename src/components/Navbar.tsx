@@ -13,9 +13,9 @@ export function Navbar() {
             <Image
               className="w-14 h-14 lg:w-16 lg:h-16 dark:invert-0 invert"
               src={CuiLogo}
+              rel="preload"
               alt="Cui's Logo"
             />
-            {/* <h1 className="text-[2rem] lg:text-[2.50rem]">脆</h1> */}
           </li>
           <li>
             <ModeToggle />
