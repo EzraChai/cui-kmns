@@ -16,7 +16,9 @@ export default function InstagramRecentActivity({
         href={`instagram://media?id=${recentActivity.instagramPostID}`}
       >
         <Alert className="mt-16 bg-transparent relative overflow-hidden rounded-none border-2 dark:border-white border-black">
-          <AlertTitle className={`${mashanzheng.className} text-md`}>
+          <AlertTitle
+            className={`text-lg font-semibold leading-none tracking-tight`}
+          >
             近期大条事情
           </AlertTitle>
           <div className=" left-0 bottom-0 w-10 h-10 -z-10  rounded-full bg-purple-500 absolute blur-xl "></div>
@@ -34,7 +36,7 @@ export default function InstagramRecentActivity({
       >
         <Alert className="mt-16 bg-transparent relative overflow-hidden rounded-none border-2 dark:border-white border-black">
           <AlertTitle
-            className={`${mashanzheng.className} text-2xl lg:text-5xl`}
+            className={`text-xl font-semibold leading-none tracking-tight`}
           >
             近期大条事情
           </AlertTitle>
