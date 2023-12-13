@@ -36,7 +36,7 @@ function AlertItems({
   return (
     <Alert className="mt-16 bg-transparent relative overflow-hidden rounded-none border-2 dark:border-white border-black">
       <AlertTitle className={`text-lg font-bold leading-none tracking-tight`}>
-        近期大条事情
+        近期大条事件
       </AlertTitle>
       <div className=" left-0 top-0 w-10 h-10 -z-10  rounded-full bg-purple-500 absolute blur-xl "></div>
       <div className=" left-0 bottom-0 w-5 h-5 -z-10  rounded-full bg-blue-500 absolute blur-xl "></div>
