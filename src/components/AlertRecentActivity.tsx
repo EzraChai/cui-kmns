@@ -4,7 +4,7 @@ import { RecentActivity } from "@/lib/types";
 
 async function getRecentActivity(): Promise<RecentActivity> {
   return await client.fetch<RecentActivity>(`
-    *[_type=="recentActivity"][-1]{
+    *[_type=="recentActivity"][0]{
         title,
         description,
         _id,
