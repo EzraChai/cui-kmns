@@ -3,6 +3,7 @@ import { mashanzheng } from "./layout";
 import Members from "@/components/Members";
 import { Member } from "@/lib/types";
 import { AlertRecentActivity } from "@/components/AlertRecentActivity";
+import { Metadata } from "next";
 
 async function getMembers(): Promise<Member[]> {
   return await client.fetch<Member[]>(`
@@ -50,4 +51,24 @@ export default async function Home() {
     </main>
   );
 }
-// }
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://kmnscui.vercel.app"),
+  title: "脆",
+  generator: "Next.js",
+  referrer: "origin-when-cross-origin",
+  keywords: ["kmns", "KMNS", "脆", "cui"],
+  description: "脆的官方认证网页",
+  openGraph: {
+    title: "脆|官方网站",
+    description: "脆的官方认证网页",
+    images: [{ url: "/cui-og.png", type: "png" }],
+    url: "https://kmnscui.vercel.app",
+    type: "website",
+  },
+  authors: [
+    {
+      name: "Ezra Chai",
+    },
+  ],
+};

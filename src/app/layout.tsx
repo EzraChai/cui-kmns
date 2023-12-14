@@ -1,6 +1,5 @@
 import "./globals.css";
 
-import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { Inter, Ma_Shan_Zheng } from "next/font/google";
 import React from "react";
@@ -14,27 +13,6 @@ export const mashanzheng = Ma_Shan_Zheng({
   weight: ["400"],
   display: "swap",
 });
-
-export const metadata: Metadata = {
-  metadataBase: new URL("https://kmnscui.vercel.app"),
-  title: "脆",
-  generator: "Next.js",
-  referrer: "origin-when-cross-origin",
-  keywords: ["kmns", "KMNS", "脆"],
-  description: "脆的官方认证网页",
-  openGraph: {
-    title: "脆|官方网站",
-    description: "脆的官方认证网页",
-    images: [{ url: "/cui-og.png", type: "png" }],
-    url: "https://kmnscui.vercel.app",
-    type: "website",
-  },
-  authors: [
-    {
-      name: "Ezra Chai",
-    },
-  ],
-};
 
 export default function RootLayout({
   children,
