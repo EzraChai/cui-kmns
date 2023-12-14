@@ -52,7 +52,7 @@ function Activity({ recentActivity }: { recentActivity: RecentActivity }) {
       <div className="pt-12 text-2xl lg:text-3xl font-bold">
         {recentActivity.title}
       </div>
-      <div className="mb-12 text-md mt-4 text-neutral-700 dark:text-neutral-300">
+      <div className="mb-12 text-md mt-2 lg:mt-4 text-neutral-700 dark:text-neutral-300">
         {recentActivity.description}
       </div>
     </>
