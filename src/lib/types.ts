@@ -33,6 +33,7 @@ export type Member = {
 
 export type RecentActivity = {
   _id: string;
+  title: string;
   description: string;
   instagramPostID: string;
 };
