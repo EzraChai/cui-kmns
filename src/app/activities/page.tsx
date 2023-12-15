@@ -1,5 +1,6 @@
 import { client } from "@/lib/client";
 import { RecentActivity } from "@/lib/types";
+import { Metadata } from "next";
 import Link from "next/link";
 
 async function getRecentActivities(): Promise<RecentActivity[]> {
@@ -58,3 +59,7 @@ function Activity({ recentActivity }: { recentActivity: RecentActivity }) {
     </>
   );
 }
+
+export const metadata: Metadata = {
+  title: "脆 | 活动",
+};

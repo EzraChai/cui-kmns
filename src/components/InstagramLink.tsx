@@ -31,7 +31,7 @@ export default function InstagramRecentActivity({
 
 function AlertItems({ recentActivityTitle }: { recentActivityTitle: string }) {
   return (
-    <Alert className="mt-16 bg-transparent relative overflow-hidden rounded-none border-2 dark:border-white border-black">
+    <Alert className="mt-16 bg-transparent relative overflow-hidden rounded-lg border-2 dark:border-white border-black">
       <AlertTitle className={`text-lg font-bold leading-none tracking-tight`}>
         近期大条事件
       </AlertTitle>
