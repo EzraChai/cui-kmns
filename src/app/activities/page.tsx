@@ -5,7 +5,7 @@ import Link from "next/link";
 
 async function getRecentActivities(): Promise<RecentActivity[]> {
   return await client.fetch<RecentActivity[]>(`
-    *[_type=="recentActivity"]{
+    *[_type=="recentActivity"]| order(_createdAt desc){
         title,
         description,
         _id,
