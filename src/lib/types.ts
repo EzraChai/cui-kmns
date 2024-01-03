@@ -10,6 +10,10 @@ type Image = {
   asset: AssetReference;
 };
 
+export type RecentPhoto = {
+  photo: Image;
+};
+
 type Tag = {
   _key: string;
   _type: string;

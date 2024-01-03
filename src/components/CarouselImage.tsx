@@ -7,9 +7,14 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { urlFor } from "@/lib/client";
+import { RecentPhoto } from "@/lib/types";
 import Image from "next/image";
 
-export default function CarouselImage({ recentPhotos }) {
+export default function CarouselImage({
+  recentPhotos,
+}: {
+  recentPhotos: RecentPhoto[];
+}) {
   console.log(recentPhotos);
   return (
     <Carousel>

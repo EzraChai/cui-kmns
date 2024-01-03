@@ -1,7 +1,7 @@
 import { client } from "@/lib/client";
 import { mashanzheng } from "./layout";
 import Members from "@/components/Members";
-import { Member } from "@/lib/types";
+import { Member, RecentPhoto } from "@/lib/types";
 import { AlertRecentActivity } from "@/components/AlertRecentActivity";
 import { Metadata } from "next";
 import CarouselImage from "@/components/CarouselImage";
@@ -22,8 +22,8 @@ async function getMembers(): Promise<Member[]> {
 `);
 }
 
-async function getPhotos() {
-  return await client.fetch(`
+async function getPhotos(): Promise<RecentPhoto> {
+  return await client.fetch<RecentPhoto>(`
   *[_type=="recentPhoto"]{
     photo
   }
