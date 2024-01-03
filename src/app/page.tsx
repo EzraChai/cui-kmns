@@ -22,8 +22,8 @@ async function getMembers(): Promise<Member[]> {
 `);
 }
 
-async function getPhotos(): Promise<RecentPhoto> {
-  return await client.fetch<RecentPhoto>(`
+async function getPhotos(): Promise<RecentPhoto[]> {
+  return await client.fetch<RecentPhoto[]>(`
   *[_type=="recentPhoto"]{
     photo
   }
