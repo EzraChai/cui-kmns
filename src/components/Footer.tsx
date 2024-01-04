@@ -12,6 +12,14 @@ export default function Footer() {
       >
         Instagram
       </Link>
+      <Link
+        target="_blank"
+        className="hover:text-white transition"
+        referrerPolicy="no-referrer"
+        href="https://www.youtube.com/@cui_brittle2324"
+      >
+        Youtube
+      </Link>
     </div>
   );
 }
