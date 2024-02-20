@@ -24,10 +24,7 @@ export default async function StoryPage() {
   const stories = await getStory();
   return (
     <div className="pt-12 max-w-5xl mx-auto">
-      <div className="mt-16 px-6 md:px-0 min-h-max">
-        <h3 className={`${mashanzheng.className} text-2xl lg:text-5xl mb-12`}>
-          小故事
-        </h3>
+      <div className="mt-32 px-6 md:px-0 min-h-max">
         <div className="grid md:grid-cols-3 mt-8 pb-8">
           {stories.map((story, index) => (
             <div key={index}>

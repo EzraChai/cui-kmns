@@ -19,10 +19,7 @@ export default async function ActivityPage() {
   const recentActivities = await getRecentActivities();
   return (
     <div className="pt-12 max-w-5xl mx-auto">
-      <div className="mt-16 px-6 md:px-0 min-h-max">
-        <h3 className={`${mashanzheng.className} text-2xl lg:text-5xl mb-6`}>
-          活动
-        </h3>
+      <div className="mt-24 px-6 md:px-0 min-h-max">
         {recentActivities.map((recentActivity: RecentActivity) => (
           <div
             key={recentActivity._id}
