@@ -29,8 +29,8 @@ export default async function StoryPage() {
           小故事
         </h3>
         <div className="grid md:grid-cols-3 mt-8 pb-8">
-          {stories.map((story) => (
-            <>
+          {stories.map((story, index) => (
+            <div key={index}>
               <Card className=" border-black dark:border-white border-2">
                 <CardHeader>
                   <CardTitle>{story.title}</CardTitle>
@@ -42,7 +42,7 @@ export default async function StoryPage() {
                   </p>
                 </CardContent>
               </Card>
-            </>
+            </div>
           ))}
         </div>
       </div>
