@@ -1,10 +1,17 @@
 import { client } from "@/lib/client";
 import { mashanzheng } from "./layout";
 import Members from "@/components/Members";
-import { Member, RecentPhoto } from "@/lib/types";
+import { Member, RecentPhoto, Story } from "@/lib/types";
 import { AlertRecentActivity } from "@/components/AlertRecentActivity";
 import { Metadata } from "next";
 import CarouselImage from "@/components/CarouselImage";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 async function getMembers(): Promise<Member[]> {
   return await client.fetch<Member[]>(`
@@ -30,9 +37,20 @@ async function getPhotos(): Promise<RecentPhoto[]> {
 `);
 }
 
+async function getStory(): Promise<Story[]> {
+  return await client.fetch<Story[]>(`
+  *[_type=="story"]| order(_createdAt desc){
+    title,
+    story,
+    date
+  }
+`);
+}
+
 export default async function Home() {
   const members = await getMembers();
   const recentPhotos = await getPhotos();
+  const stories = await getStory();
   return (
     <main className=" min-h-screen max-w-5xl px-4 pt-12 mx-auto">
       <div className={`flex justify-center flex-col `}>
@@ -70,6 +88,29 @@ export default async function Home() {
           成员介绍
         </h3>
         <Members members={members} />
+      </div>
+
+      <div className="mt-28 mb-14">
+        <h3 className={`${mashanzheng.className} text-2xl lg:text-5xl`}>
+          小故事
+        </h3>
+        <div className="grid grid-cols-3 mt-8 pb-8">
+          {stories.map((story) => (
+            <>
+              <Card className=" border-black dark:border-white border-2">
+                <CardHeader>
+                  <CardTitle>{story.title}</CardTitle>
+                  <CardDescription>{story.date}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-neutral-800 dark:text-neutral-200 whitespace-pre-line">
+                    {story.story}
+                  </p>
+                </CardContent>
+              </Card>
+            </>
+          ))}
+        </div>
       </div>
     </main>
   );

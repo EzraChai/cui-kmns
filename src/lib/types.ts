@@ -41,3 +41,9 @@ export type RecentActivity = {
   description: string;
   instagramPostID: string;
 };
+
+export type Story = {
+  title: string;
+  story: string;
+  date: string;
+};
