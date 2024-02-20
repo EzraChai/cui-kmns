@@ -89,29 +89,6 @@ export default async function Home() {
         </h3>
         <Members members={members} />
       </div>
-
-      <div className="mt-28 mb-14">
-        <h3 className={`${mashanzheng.className} text-2xl lg:text-5xl`}>
-          小故事
-        </h3>
-        <div className="grid md:grid-cols-3 mt-8 pb-8">
-          {stories.map((story) => (
-            <>
-              <Card className=" border-black dark:border-white border-2">
-                <CardHeader>
-                  <CardTitle>{story.title}</CardTitle>
-                  <CardDescription>{story.date}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-neutral-800 dark:text-neutral-200 whitespace-pre-line">
-                    {story.story}
-                  </p>
-                </CardContent>
-              </Card>
-            </>
-          ))}
-        </div>
-      </div>
     </main>
   );
 }

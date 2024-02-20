@@ -41,6 +41,14 @@ export function Navbar() {
             >
               活动
             </Link>
+            <Link
+              className={` text-xs dark:hover:text-white transition hover:text-neutral-900 lg:text-md text-neutral-500 dark:text-neutral-400 ${
+                pathName === "/stories" && "text-neutral-900 dark:text-white"
+              }`}
+              href="/stories"
+            >
+              故事
+            </Link>
 
             <ModeToggle />
           </li>
