@@ -94,7 +94,7 @@ export default async function Home() {
         <h3 className={`${mashanzheng.className} text-2xl lg:text-5xl`}>
           小故事
         </h3>
-        <div className="grid grid-cols-3 mt-8 pb-8">
+        <div className="grid md:grid-cols-3 mt-8 pb-8">
           {stories.map((story) => (
             <>
               <Card className=" border-black dark:border-white border-2">
