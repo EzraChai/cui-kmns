@@ -1,17 +1,10 @@
 import { client } from "@/lib/client";
 import { mashanzheng } from "./layout";
 import Members from "@/components/Members";
-import { Member, RecentPhoto, Story } from "@/lib/types";
+import { Member, RecentPhoto } from "@/lib/types";
 import { AlertRecentActivity } from "@/components/AlertRecentActivity";
 import { Metadata } from "next";
 import CarouselImage from "@/components/CarouselImage";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 
 async function getMembers(): Promise<Member[]> {
   return await client.fetch<Member[]>(`
@@ -37,20 +30,10 @@ async function getPhotos(): Promise<RecentPhoto[]> {
 `);
 }
 
-async function getStory(): Promise<Story[]> {
-  return await client.fetch<Story[]>(`
-  *[_type=="story"]| order(_createdAt desc){
-    title,
-    story,
-    date
-  }
-`);
-}
-
 export default async function Home() {
   const members = await getMembers();
   const recentPhotos = await getPhotos();
-  const stories = await getStory();
+
   return (
     <main className=" min-h-screen max-w-5xl px-4 pt-12 mx-auto">
       <div className={`flex justify-center flex-col `}>
