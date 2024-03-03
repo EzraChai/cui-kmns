@@ -7,7 +7,6 @@ import {
 } from "@/components/ui/card";
 import { client } from "@/lib/client";
 import { Story } from "@/lib/types";
-import { mashanzheng } from "../layout";
 import { Metadata } from "next";
 
 async function getStory(): Promise<Story[]> {
@@ -25,10 +24,10 @@ export default async function StoryPage() {
   return (
     <div className="pt-12 max-w-5xl mx-auto">
       <div className="mt-32 px-6 md:px-0 min-h-max">
-        <div className="grid md:grid-cols-3 mt-8 pb-8">
+        <div className="grid md:grid-cols-3 mt-8 pb-8 gap-4">
           {stories.map((story, index) => (
             <div key={index}>
-              <Card className=" border-black dark:border-white border-2">
+              <Card className="border-black dark:border-white border-2">
                 <CardHeader>
                   <CardTitle>{story.title}</CardTitle>
                   <CardDescription>{story.date}</CardDescription>
