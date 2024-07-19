@@ -2,7 +2,6 @@ import { client } from "@/lib/client";
 import { RecentActivity } from "@/lib/types";
 import { Metadata } from "next";
 import Link from "next/link";
-import { mashanzheng } from "../layout";
 
 async function getRecentActivities(): Promise<RecentActivity[]> {
   return await client.fetch<RecentActivity[]>(`
