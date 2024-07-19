@@ -28,7 +28,7 @@ export default async function StoryPage() {
           {stories.map((story, index) => (
             <Card
               key={index}
-              className="w-full border-black dark:border-white border-2"
+              className="group mb-8 w-full border-black dark:border-white border-2"
             >
               <CardHeader>
                 <CardTitle>{story.title}</CardTitle>
