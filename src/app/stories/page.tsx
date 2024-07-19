@@ -37,7 +37,6 @@ export default async function StoryPage() {
               <CardContent>
                 <p className="text-neutral-800 dark:text-neutral-200 whitespace-pre-line">
                   {story.story}
-                  {story.story}
                 </p>
               </CardContent>
             </Card>
