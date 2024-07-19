@@ -22,13 +22,13 @@ async function getStory(): Promise<Story[]> {
 export default async function StoryPage() {
   const stories = await getStory();
   return (
-    <div className="pt-12 max-w-5xl mx-auto">
-      <div className="mt-32 px-6 md:px-0 min-h-max">
-        <div className="columns-1 md:columns-3 mt-8 pb-8 gap-8">
+    <div className="pt-12 max-w-5xl mx-auto ">
+      <div className="mt-32 px-6 md:px-0 ">
+        <div className="columns-1 md:columns-2 mt-8 pb-8 gap-8 ">
           {stories.map((story, index) => (
             <Card
               key={index}
-              className="group mb-8 w-full border-black dark:border-white border-2"
+              className="group min-h-full   mb-8 w-full border-black dark:border-white border-2"
             >
               <CardHeader>
                 <CardTitle>{story.title}</CardTitle>
