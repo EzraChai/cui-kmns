@@ -30,15 +30,17 @@ export default async function StoryPage() {
               key={index}
               className="group aspect-video  w-full border-black dark:border-white border-2"
             >
-              <CardHeader>
-                <CardTitle>{story.title}</CardTitle>
-                <CardDescription>{story.date}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-neutral-800 dark:text-neutral-200 whitespace-pre-line">
-                  {story.story}
-                </p>
-              </CardContent>
+              <div className="">
+                <CardHeader>
+                  <CardTitle>{story.title}</CardTitle>
+                  <CardDescription>{story.date}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-neutral-800 dark:text-neutral-200 whitespace-pre-line">
+                    {story.story}
+                  </p>
+                </CardContent>
+              </div>
             </Card>
           ))}
         </div>
