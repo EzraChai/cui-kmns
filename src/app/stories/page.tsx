@@ -28,19 +28,18 @@ export default async function StoryPage() {
           {stories.map((story, index) => (
             <Card
               key={index}
-              className="group aspect-video  w-full border-black dark:border-white border-2"
+              className="group break-inside-avoid-column w-full border-black dark:border-white border-2"
             >
-              <div className="">
-                <CardHeader>
-                  <CardTitle>{story.title}</CardTitle>
-                  <CardDescription>{story.date}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-neutral-800 dark:text-neutral-200 whitespace-pre-line">
-                    {story.story}
-                  </p>
-                </CardContent>
-              </div>
+              <CardHeader>
+                <CardTitle>{story.title}</CardTitle>
+                <CardDescription>{story.date}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-neutral-800 dark:text-neutral-200 whitespace-pre-line">
+                  {story.story}
+                  {story.story}
+                </p>
+              </CardContent>
             </Card>
           ))}
         </div>
