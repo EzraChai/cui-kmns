@@ -19,13 +19,14 @@ async function getMembers(): Promise<Member[]> {
       }
     }
   }
+ | order(batch asc)
 `);
 }
 
 async function getPhotos(): Promise<RecentPhoto[]> {
   return await client.fetch<RecentPhoto[]>(`
   *[_type=="recentPhoto"]| order(_createdAt desc){
-    photo 
+    photo
   }
 `);
 }
