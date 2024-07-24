@@ -16,7 +16,7 @@ export default function Members({ members }: { members: Member[] }) {
 
   useEffect(() => {
     setIsLaptop(
-      /Windows NT|Macintosh|Linux x86_64/i.test(navigator?.userAgent)
+      /Windows NT|Macintosh|Linux x86_64/i.test(navigator?.userAgent),
     );
   }, [isLaptop]);
 
@@ -30,7 +30,7 @@ export default function Members({ members }: { members: Member[] }) {
           member.englishName
             .toLowerCase()
             .includes(debouncedSearch.toLowerCase()) ||
-          member.chineseName.includes(debouncedSearch)
+          member.chineseName.includes(debouncedSearch),
       );
       setNewMembers(newMembers2);
     }
@@ -55,7 +55,7 @@ export default function Members({ members }: { members: Member[] }) {
         <Suspense
           fallback={
             <>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
                 <Card
                   key={num}
                   className="flex justify-center items-center flex-col border-2 border-black dark:border-white hover:cursor-pointer"

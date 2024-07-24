@@ -123,14 +123,22 @@ export default function MemberCard({
                     </p>
                   </div>
 
-                  <div className="absolute bottom-0 flex items-center">
-                    <Instagram />
-                    <Button variant={"link"}>
-                      <InstagramButton
-                        isLaptop={isLaptop}
-                        instagramAccount={member.instagramAccount}
-                      />
-                    </Button>
+                  <div className="absolute bottom-0 flex items-center justify-between w-full pr-2">
+                    <div className="inline-flex justify-center items-center">
+                      <Instagram />
+                      <Button variant={"link"}>
+                        <InstagramButton
+                          isLaptop={isLaptop}
+                          instagramAccount={member.instagramAccount}
+                        />
+                      </Button>
+                    </div>
+                    <div className="text-xs ">
+                      Batch:{" "}
+                      <span className="text-neutral-100">
+                        {member.batch}23/24
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>

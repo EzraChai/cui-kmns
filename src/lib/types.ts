@@ -33,6 +33,7 @@ export type Member = {
   profileImage: Image;
   tags: Tag[];
   _updatedAt: string;
+  batch: string;
 };
 
 export type RecentActivity = {
