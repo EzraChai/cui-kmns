@@ -135,8 +135,8 @@ export default function MemberCard({
                     </div>
                     <div className="text-xs ">
                       Batch:{" "}
-                      <span className="text-neutral-100">
-                        {member.batch}23/24
+                      <span className="text-neutral-900 dark:text-neutral-100">
+                        {member.batch}
                       </span>
                     </div>
                   </div>
