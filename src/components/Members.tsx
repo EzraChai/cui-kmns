@@ -25,14 +25,14 @@ export default function Members({ members }: { members: Member[] }) {
       setNewMembers(members);
     }
     if ("" !== debouncedSearch && members) {
-      let newMembers2 = members.filter(
+      let filteredMembers = members.filter(
         (member) =>
           member.englishName
             .toLowerCase()
             .includes(debouncedSearch.toLowerCase()) ||
           member.chineseName.includes(debouncedSearch),
       );
-      setNewMembers(newMembers2);
+      setNewMembers(filteredMembers);
     }
   }, [debouncedSearch, members]);
 
@@ -50,7 +50,12 @@ export default function Members({ members }: { members: Member[] }) {
           <p>共{members.length}注册成员</p>
         </div>
       </div>
-
+      <div className="mt-12 mb-6 relative w-full flex justify-center">
+        <p className=" w-max text-5xl text-center font-black px-12 bg-white dark:bg-black">
+          23/24
+        </p>
+        <div className="absolute top-6 -z-10 border w-full h-[2px] border-black" />
+      </div>
       <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <Suspense
           fallback={

@@ -8,18 +8,17 @@ import CarouselImage from "@/components/CarouselImage";
 
 async function getMembers(): Promise<Member[]> {
   return await client.fetch<Member[]>(`
-  *[_type=="member"]{
-    ...,
-    profileImage{
-       asset -> {
-        metadata {
-          lqip
-        },
-      "_ref": _id,
+    *[_type=="member"][batch == "23/24"]{
+        ...,
+        profileImage{
+          asset -> {
+            metadata {
+              lqip
+            },
+          "_ref": _id,
+          }
+        }
       }
-    }
-  }
- | order(batch asc)
 `);
 }
 
