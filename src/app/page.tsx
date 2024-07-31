@@ -1,24 +1,28 @@
 import { client } from "@/lib/client";
 import { mashanzheng } from "./layout";
 import Members from "@/components/Members";
-import { Member, RecentPhoto } from "@/lib/types";
+import { RecentPhoto, Batch } from "@/lib/types";
 import { AlertRecentActivity } from "@/components/AlertRecentActivity";
 import { Metadata } from "next";
 import CarouselImage from "@/components/CarouselImage";
 
-async function getMembers(): Promise<Member[]> {
-  return await client.fetch<Member[]>(`
-    *[_type=="member"][batch == "23/24"]{
-        ...,
-        profileImage{
-          asset -> {
-            metadata {
-              lqip
-            },
-          "_ref": _id,
+async function getMembers(): Promise<Batch[]> {
+  return await client.fetch<Batch[]>(`
+    [{
+        "year": "23/24",
+        "members": *[_type=="member"][batch == "23/24"]{
+            ...,
+            profileImage{
+              asset -> {
+                metadata {
+                  lqip
+                },
+              "_ref": _id,
+            }
           }
         }
-      }
+      }]
+
 `);
 }
 
@@ -31,7 +35,7 @@ async function getPhotos(): Promise<RecentPhoto[]> {
 }
 
 export default async function Home() {
-  const members = await getMembers();
+  const batches = await getMembers();
   const recentPhotos = await getPhotos();
 
   return (
@@ -70,7 +74,7 @@ export default async function Home() {
         <h3 className={`${mashanzheng.className} text-2xl lg:text-5xl`}>
           成员介绍
         </h3>
-        <Members members={members} />
+        <Members batches={batches} />
       </div>
     </main>
   );

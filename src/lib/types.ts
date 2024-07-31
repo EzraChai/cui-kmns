@@ -20,6 +20,11 @@ type Tag = {
   tag: string;
 };
 
+export type Batch = {
+  year: string;
+  members: Member[];
+};
+
 export type Member = {
   _createdAt: string;
   _id: string;

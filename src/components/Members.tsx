@@ -1,6 +1,6 @@
 "use client";
 
-import { Member } from "@/lib/types";
+import { Batch, Member } from "@/lib/types";
 import MemberCard from "./MemberCard";
 import { Suspense, useEffect, useState } from "react";
 import { Card, CardContent } from "./ui/card";
@@ -8,11 +8,12 @@ import { Skeleton } from "./ui/skeleton";
 import { Input } from "./ui/input";
 import { useDebounce } from "@/lib/hooks";
 
-export default function Members({ members }: { members: Member[] }) {
-  const [newMembers, setNewMembers] = useState<Member[]>(members);
+export default function Members({ batches }: { batches: Batch[] }) {
+  const [newMembers, setNewMembers] = useState<Batch[]>(batches);
   const [search, setSearch] = useState("");
   const [isLaptop, setIsLaptop] = useState(false);
   const debouncedSearch = useDebounce(search);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     setIsLaptop(
@@ -21,20 +22,30 @@ export default function Members({ members }: { members: Member[] }) {
   }, [isLaptop]);
 
   useEffect(() => {
-    if ("" === debouncedSearch && members) {
-      setNewMembers(members);
+    let count = 0;
+    batches.forEach((batch) => {
+      count += batch.members.length;
+    });
+    setCount(count);
+  }, [batches]);
+
+  useEffect(() => {
+    if ("" === debouncedSearch && batches) {
+      setNewMembers(batches);
     }
-    if ("" !== debouncedSearch && members) {
-      let filteredMembers = members.filter(
-        (member) =>
-          member.englishName
-            .toLowerCase()
-            .includes(debouncedSearch.toLowerCase()) ||
-          member.chineseName.includes(debouncedSearch),
+    if ("" !== debouncedSearch && batches) {
+      batches.forEach((batch) =>
+        batch.members.filter(
+          (member) =>
+            member.englishName
+              .toLowerCase()
+              .includes(debouncedSearch.toLowerCase()) ||
+            member.chineseName.includes(debouncedSearch),
+        ),
       );
-      setNewMembers(filteredMembers);
+      setNewMembers(batches);
     }
-  }, [debouncedSearch, members]);
+  }, [debouncedSearch, batches]);
 
   return (
     <>
@@ -47,49 +58,61 @@ export default function Members({ members }: { members: Member[] }) {
           placeholder="寻找帅哥成员"
         />
         <div className="hidden md:block text-xs text-foreground">
-          <p>共{members.length}注册成员</p>
+          <p>
+            共{count}
+            注册成员
+          </p>
         </div>
       </div>
-      <div className="mt-12 mb-6 relative w-full flex justify-center">
-        <p className=" w-max text-5xl text-center font-black px-12 bg-white dark:bg-black">
-          23/24
-        </p>
-        <div className="absolute top-6 -z-10 border w-full h-[2px] border-black" />
-      </div>
-      <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <Suspense
-          fallback={
-            <>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                <Card
-                  key={num}
-                  className="flex justify-center items-center flex-col border-2 border-black dark:border-white hover:cursor-pointer"
-                >
-                  <div className="p-4">
-                    <Skeleton className="w-[100px] h-[100px] lg:w-[200px] lg:h-[200px]"></Skeleton>
-                  </div>
+      {newMembers.map((batch, index) => (
+        <div key={index}>
+          <div className="mt-12 mb-6 relative w-full flex justify-center">
+            <p className=" w-max text-5xl text-center font-black px-12 bg-white dark:bg-black">
+              {batch.year}
+            </p>
+            <div className="absolute top-6 -z-10 border w-full h-[2px] border-black" />
+          </div>
+          <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <Suspense
+              fallback={
+                <>
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                    <Card
+                      key={num}
+                      className="flex justify-center items-center flex-col border-2 border-black dark:border-white hover:cursor-pointer"
+                    >
+                      <div className="p-4">
+                        <Skeleton className="w-[100px] h-[100px] lg:w-[200px] lg:h-[200px]"></Skeleton>
+                      </div>
 
-                  <CardContent>
-                    <Skeleton className="w-[60px] lg:w-[180px] h-[20px]"></Skeleton>
-                    <Skeleton className="mt-4 w-[60px] lg:w-[180px] h-[20px]"></Skeleton>
-                  </CardContent>
-                </Card>
+                      <CardContent>
+                        <Skeleton className="w-[60px] lg:w-[180px] h-[20px]"></Skeleton>
+                        <Skeleton className="mt-4 w-[60px] lg:w-[180px] h-[20px]"></Skeleton>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </>
+              }
+            >
+              {batch.members.map((member: Member) => (
+                <MemberCard
+                  isLaptop={isLaptop}
+                  key={member._id}
+                  member={member}
+                />
               ))}
-            </>
-          }
-        >
-          {newMembers.map((member: Member) => (
-            <MemberCard isLaptop={isLaptop} key={member._id} member={member} />
-          ))}
-          {newMembers.length === 0 && (
-            <div className="text-center col-span-4 pt-12 pb-4">
-              找不到此帅哥成员😭
-            </div>
-          )}
-        </Suspense>
-      </div>
+              {newMembers.length === 0 && (
+                <div className="text-center col-span-4 pt-12 pb-4">
+                  找不到此帅哥成员😭
+                </div>
+              )}
+            </Suspense>
+          </div>
+        </div>
+      ))}
+
       <div className="mt-6 pr-1 flex w-full justify-end md:hidden text-xs text-foreground">
-        <p>共{members.length}注册成员</p>
+        <p>共{batches.length}注册成员</p>
       </div>
     </>
   );
