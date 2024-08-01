@@ -70,7 +70,7 @@ export default function Members({ batches }: { batches: Batch[] }) {
             <p className=" w-max text-5xl text-center font-black px-12 bg-white dark:bg-black">
               {batch.year}
             </p>
-            <div className="absolute top-6 -z-10 border w-full h-[2px] border-black" />
+            <div className="absolute top-6 -z-10 border w-full h-[2px] border-black  dark:border-white " />
           </div>
           <div className="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <Suspense
