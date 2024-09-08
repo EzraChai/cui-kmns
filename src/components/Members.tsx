@@ -7,6 +7,7 @@ import { Card, CardContent } from "./ui/card";
 import { Skeleton } from "./ui/skeleton";
 import { Input } from "./ui/input";
 import { useDebounce } from "@/lib/hooks";
+import { CloudCog } from "lucide-react";
 
 export default function Members({ batches }: { batches: Batch[] }) {
   const [newMembers, setNewMembers] = useState<Batch[]>(batches);
@@ -30,20 +31,24 @@ export default function Members({ batches }: { batches: Batch[] }) {
   }, [batches]);
 
   useEffect(() => {
-    if ("" === debouncedSearch && batches) {
+    if ("" === debouncedSearch) {
       setNewMembers(batches);
     }
-    if ("" !== debouncedSearch && batches) {
-      batches.forEach((batch) =>
-        batch.members.filter(
-          (member) =>
-            member.englishName
-              .toLowerCase()
-              .includes(debouncedSearch.toLowerCase()) ||
-            member.chineseName.includes(debouncedSearch),
-        ),
-      );
-      setNewMembers(batches);
+    if ("" !== debouncedSearch) {
+      const newBatches: Batch[] = [];
+      batches.forEach((batch) => {
+        newBatches.push({
+          members: batch.members.filter(
+            (member) =>
+              member.englishName
+                .toLowerCase()
+                .includes(debouncedSearch.toLowerCase()) ||
+              member.chineseName.includes(debouncedSearch),
+          ),
+          year: batch.year,
+        });
+      });
+      setNewMembers(newBatches);
     }
   }, [debouncedSearch, batches]);
 
