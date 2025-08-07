@@ -117,7 +117,7 @@ export default function Members({ batches }: { batches: Batch[] }) {
       ))}
 
       <div className="mt-6 pr-1 flex w-full justify-end md:hidden text-xs text-foreground">
-        <p>共{batches.length}注册成员</p>
+        <p>共{count}注册成员</p>
       </div>
     </>
   );
